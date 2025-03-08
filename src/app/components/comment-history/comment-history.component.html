@@ -1,1 +1,7 @@
-<p>comment-history works!</p>
+<div *ngFor="let comment of allComments; let i = index" class="comment-item">
+  <div class="comment-details">
+    <p><strong>User:</strong> {{ allComments[i].user }}</p>
+    <p><strong>Comment:</strong> {{ comment.comment }}</p>
+    <p><strong>Approved:</strong> {{ comment.approved }}</p>
+  </div>
+</div>
