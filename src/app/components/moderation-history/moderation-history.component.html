@@ -1,0 +1,10 @@
+<div
+  *ngFor="let comment of moderationDecisions; let i = index"
+  class="comment-item"
+>
+  <div class="comment-details">
+    <p><strong>User:</strong> {{ moderationDecisions[i].user }}</p>
+    <p><strong>Comment:</strong> {{ comment.comment }}</p>
+    <p><strong>Approved:</strong> {{ comment.approved }}</p>
+  </div>
+</div>
