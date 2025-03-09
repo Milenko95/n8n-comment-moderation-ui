@@ -2,37 +2,53 @@
   <h2 class="moderation-title">Review Flagged Comments</h2>
 
   <form (ngSubmit)="submitModeration()" class="moderation-form">
-    <div
-      *ngFor="let comment of moderatedComments; let i = index"
-      class="comment-card"
-    >
-      <div class="comment-content">
-        <div class="comment-detail">
-          <span class="comment-detail-label">User:</span>
-          <span class="comment-detail-value">{{
-            flaggedComments[i].user
-          }}</span>
+    <div *ngIf="!moderationsSaved || !moderatedComments.length" class="comments-container">
+      <p class="note">Note: Comments are not approved by default</p>
+      <div
+        *ngFor="let comment of moderatedComments; let i = index"
+        class="comment-card"
+      >
+        <div class="comment-content">
+          <div class="comment-detail">
+            <span class="comment-detail-label">User:</span>
+            <span class="comment-detail-value">{{
+              flaggedComments[i].user
+            }}</span>
+          </div>
+          <div class="comment-detail">
+            <span class="comment-detail-label">Comment:</span>
+            <span class="comment-detail-value">{{ comment.comment }}</span>
+          </div>
         </div>
-        <div class="comment-detail">
-          <span class="comment-detail-label">Comment:</span>
-          <span class="comment-detail-value">{{ comment.comment }}</span>
-        </div>
-      </div>
 
-      <div class="moderation-actions">
-        <label class="checkbox-label">
-          <input
-            type="checkbox"
-            [(ngModel)]="comment.approved"
-            name="approved-{{ i }}"
-            class="checkbox-input"
-          />
-          <span class="checkbox-text">Approve</span>
-        </label>
-       
+        <div class="moderation-actions">
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              [(ngModel)]="comment.approved"
+              name="approved-{{ i }}"
+              class="checkbox-input"
+            />
+            <span class="checkbox-text">Approve</span>
+          </label>
+        </div>
       </div>
     </div>
 
-    <button type="submit" class="submit-button">Submit Moderation</button>
+    <p *ngIf="moderationsSaved">
+      Successfully submitted moderation data. Refresh the page to get new
+      comments.
+    </p>
+    <p *ngIf="!moderatedComments.length">
+      No comments for moderation in this session, refresh the page to get new
+      comments.
+    </p>
+    <button
+      type="submit"
+      class="submit-button"
+      [disabled]="moderationsSaved || !moderatedComments.length"
+    >
+      Submit Moderation
+    </button>
   </form>
 </div>
