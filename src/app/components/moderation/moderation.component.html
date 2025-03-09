@@ -1,26 +1,54 @@
 <div class="moderation-container">
-  <h2>Flagged Comments</h2>
+  <h2 class="moderation-title">Review Flagged Comments</h2>
 
-  <form (ngSubmit)="submitModeration()">
-    <div
-      *ngFor="let comment of moderatedComments; let i = index"
-      class="comment-item"
-    >
-      <div class="comment-details">
-        <p><strong>User:</strong> {{ flaggedComments[i].user }}</p>
-        <p><strong>Comment:</strong> {{ comment.comment }}</p>
+  <form (ngSubmit)="submitModeration()" class="moderation-form">
+    <div *ngIf="!moderationsSaved || !moderatedComments.length" class="comments-container">
+      <p class="note">Note: Comments are not approved by default</p>
+      <div
+        *ngFor="let comment of moderatedComments; let i = index"
+        class="comment-card"
+      >
+        <div class="comment-content">
+          <div class="comment-detail">
+            <span class="comment-detail-label">User:</span>
+            <span class="comment-detail-value">{{
+              flaggedComments[i].user
+            }}</span>
+          </div>
+          <div class="comment-detail">
+            <span class="comment-detail-label">Comment:</span>
+            <span class="comment-detail-value">{{ comment.comment }}</span>
+          </div>
+        </div>
+
+        <div class="moderation-actions">
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              [(ngModel)]="comment.approved"
+              name="approved-{{ i }}"
+              class="checkbox-input"
+            />
+            <span class="checkbox-text">Approve</span>
+          </label>
+        </div>
       </div>
-
-      <label>
-        Approved
-        <input
-          type="checkbox"
-          [(ngModel)]="comment.approved"
-          name="approved-{{ i }}"
-        />
-      </label>
     </div>
 
-    <button type="submit">Submit Moderation</button>
+    <p *ngIf="moderationsSaved">
+      Successfully submitted moderation data. Refresh the page to get new
+      comments.
+    </p>
+    <p *ngIf="!moderatedComments.length">
+      No comments for moderation in this session, refresh the page to get new
+      comments.
+    </p>
+    <button
+      type="submit"
+      class="submit-button"
+      [disabled]="moderationsSaved || !moderatedComments.length"
+    >
+      Submit Moderation
+    </button>
   </form>
 </div>

@@ -1,20 +1,140 @@
 .moderation-container {
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
+  padding: 32px;
+  max-width: 700px;
+  margin: 40px auto;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+  border-radius: 12px; /* More rounded corners */
+  background-color: #fff;
+}
+
+.moderation-title {
+  font-size: 28px; /* Larger title */
+  font-weight: 500;
+  color: #202124;
+  margin-bottom: 32px; /* More space below title */
+  text-align: center;
+}
+
+.moderation-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the top */
+  padding: 24px; /* More padding */
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  margin-bottom: 20px; /* More space between cards */
+  background-color: #f9f9f9;
+  transition: box-shadow 0.3s ease; /* Smooth hover transition */
+}
+
+.comment-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18); /* More shadow on hover */
+}
+
+.comment-content {
+  flex-grow: 1;
+  margin-right: 24px; /* More space */
+}
+
+.comment-detail {
+  display: flex;
+  align-items: baseline; /* Align labels and values */
+  margin-bottom: 12px; /* Space between details */
+  word-break: break-word; /* Prevent long words from breaking layout */
+}
+
+.comment-detail-label {
+  font-weight: 500;
+  color: #5f6368;
+  margin-right: 8px;
+  min-width: 80px; /* Consistent label width */
+}
+
+.comment-detail-value {
+  color: #202124;
+  line-height: 1.6;
+}
+
+.moderation-actions {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #1a73e8;
+}
+
+.checkbox-input {
+  margin-right: 10px;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #1a73e8;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox-input:checked {
+  background-color: #1a73e8;
+}
+
+.checkbox-input:checked::before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 5px;
+  height: 14px;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  border-radius: 2px;
+}
+
+.submit-button {
+  background-color: #34a853;
+  color: #fff;
+  padding: 14px 32px; /* Larger button */
+  border: none;
+  border-radius: 8px; /* Slightly more rounded */
+  cursor: pointer;
+  font-size: 18px; /* Larger font */
+  font-weight: 500;
+  margin-top: 32px;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+
+  &[disabled] {
+    background-color: #e0e0e0; // Light grey background
+    color: #9e9e9e; // Medium grey text
+    cursor: not-allowed; // Change cursor to indicate disabled state
+    opacity: 0.7; // Slightly reduce opacity for visual cue
+    transform: none; // Remove any hover/active transformations
+    pointer-events: none; // Prevent click events
   }
-  
-  .comment-item {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ddd;
-  }
-  
-  .comment-details {
-    margin-bottom: 10px;
-  }
-  
-  button {
-    margin-top: 20px;
-  }
-  
+}
+
+.submit-button:hover {
+  background-color: #1e8e3e;
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+.submit-button:active {
+  transform: translateY(0); /* Return to original position on active */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Reduced shadow on active */
+}
+
+.note {
+  font-size: 12px;
+}

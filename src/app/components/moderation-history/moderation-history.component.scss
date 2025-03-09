@@ -1,0 +1,30 @@
+.comment-item {
+    padding: 24px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.3s ease;
+    font-family: "Roboto", sans-serif;
+  
+    &:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18);
+    }
+  
+    .comment-details {
+      p {
+        margin-bottom: 12px;
+        color: #202124;
+        line-height: 1.6;
+        word-break: break-word;
+  
+        strong {
+          font-weight: 500;
+          color: #5f6368;
+          margin-right: 8px;
+          min-width: 80px;
+          display: inline-block; // Important for min-width to work
+        }
+      }
+    }
+  }

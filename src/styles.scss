@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: "Roboto", sans-serif;
+
+}
+.container {
+  width: 100%;
+  max-width: 1280px;
+  padding-top: 20px;
+  align-self: auto;
+}
+
+app-moderation-history,
+app-comment-history {
+  display: flex;
+  justify-content: center;
+}
