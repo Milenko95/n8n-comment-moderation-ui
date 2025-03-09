@@ -1,5 +1,49 @@
-.active {
-    font-weight: bold;
-    text-decoration: underline;
+.app-nav {
+  background-color: #f8f9fa; // Light background, Google Material-inspired
+  padding: 12px 16px; // Adjust padding for better spacing
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+}
+
+.nav-list {
+  list-style-type: none;
+  display: flex;
+  gap: 16px; // Reduced gap for a more compact look
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  // No specific styles needed here, but can add padding/margin if required
+}
+
+.nav-link {
+  color: #5f6368; // Medium grey, Google Material-inspired
+  text-decoration: none;
+  padding: 8px 12px; // Add padding to make links clickable
+  border-radius: 4px; // Rounded corners for a modern look
+  transition: background-color 0.3s ease, color 0.3s ease; // Smooth transitions
+
+  &:hover {
+    background-color: rgba(60, 64, 67, 0.08); // Light hover background
+    color: #202124; // Darker text on hover
   }
-  
+
+  &.active {
+    color: #1a73e8; // Google blue for active link
+    font-weight: 500; // Medium font weight for active link
+  }
+}
+
+// Responsive adjustments (optional)
+@media (max-width: 600px) {
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: left;
+  }
+}

@@ -1,26 +1,38 @@
 <div class="moderation-container">
-  <h2>Flagged Comments</h2>
+  <h2 class="moderation-title">Review Flagged Comments</h2>
 
-  <form (ngSubmit)="submitModeration()">
+  <form (ngSubmit)="submitModeration()" class="moderation-form">
     <div
       *ngFor="let comment of moderatedComments; let i = index"
-      class="comment-item"
+      class="comment-card"
     >
-      <div class="comment-details">
-        <p><strong>User:</strong> {{ flaggedComments[i].user }}</p>
-        <p><strong>Comment:</strong> {{ comment.comment }}</p>
+      <div class="comment-content">
+        <div class="comment-detail">
+          <span class="comment-detail-label">User:</span>
+          <span class="comment-detail-value">{{
+            flaggedComments[i].user
+          }}</span>
+        </div>
+        <div class="comment-detail">
+          <span class="comment-detail-label">Comment:</span>
+          <span class="comment-detail-value">{{ comment.comment }}</span>
+        </div>
       </div>
 
-      <label>
-        Approved
-        <input
-          type="checkbox"
-          [(ngModel)]="comment.approved"
-          name="approved-{{ i }}"
-        />
-      </label>
+      <div class="moderation-actions">
+        <label class="checkbox-label">
+          <input
+            type="checkbox"
+            [(ngModel)]="comment.approved"
+            name="approved-{{ i }}"
+            class="checkbox-input"
+          />
+          <span class="checkbox-text">Approve</span>
+        </label>
+       
+      </div>
     </div>
 
-    <button type="submit">Submit Moderation</button>
+    <button type="submit" class="submit-button">Submit Moderation</button>
   </form>
 </div>

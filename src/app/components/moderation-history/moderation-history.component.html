@@ -1,10 +1,17 @@
-<div
-  *ngFor="let comment of moderationDecisions; let i = index"
-  class="comment-item"
->
-  <div class="comment-details">
-    <p><strong>User:</strong> {{ moderationDecisions[i].user }}</p>
-    <p><strong>Comment:</strong> {{ comment.comment }}</p>
-    <p><strong>Approved:</strong> {{ comment.approved }}</p>
+<div class="container">
+  <div
+    *ngFor="let comment of moderationDecisions; let i = index"
+    class="comment-item"
+  >
+    <div class="comment-details">
+      <p><strong>User:</strong> {{ moderationDecisions[i].user }}</p>
+      <p><strong>Comment:</strong> {{ comment.comment }}</p>
+      <p>
+        <strong>Approved:</strong>
+        <span [style.color]="comment.approved ? '#1a73e8' : 'red'">{{
+          comment.approved
+        }}</span>
+      </p>
+    </div>
   </div>
 </div>
