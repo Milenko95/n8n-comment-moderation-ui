@@ -21,8 +21,6 @@ export class ModerationComponent {
   loadComments(): void {
     this.dataService.getCommentsForModeration().subscribe(
       (comments) => {
-        console.log('comments', comments);
-        
         this.flaggedComments = comments;
         // Initialize moderatedComments with the fetched comments, all set to false by default
         this.moderatedComments = this.flaggedComments.map((comment) => ({

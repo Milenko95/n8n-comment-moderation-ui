@@ -20,8 +20,6 @@ export class DataService {
   }
 
   saveModeratedComments(data: any): Observable<any> {
-    console.log(data);
-    
     return this.http.post<any>(`${this.apiUrl}/moderation-decision`, data);
   }
 
